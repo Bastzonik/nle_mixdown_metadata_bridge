@@ -18,7 +18,7 @@ It copies source clip names and source timecode to a splitted mixdown, imported 
 
 This is useful for roundtrip workflows from NLE systems such as Avid Media Composer or Adobe Premiere Pro to DaVinci Resolve.
 It combines the robustness of a fully baked mixdown with the metadata advantages of an EDL.
-This allows you to identify source cameras in mixdowns when they are reflected in the source clip names.
+This allows you to identify and sort mixdown clips by source camera when the camera information is included in the source clip names.
 
 # Workflow
 1. Export a video mixdown and an EDL from the NLE of your choice (it is recommended to delete all EDL lines starting with `M2`).
