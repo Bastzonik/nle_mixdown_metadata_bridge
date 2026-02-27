@@ -84,7 +84,7 @@ For further information, see **DaVinci Resolve → Help → Documentation → De
 4. The script will run and:
    - Copy clip names from Track 2 to Track 1  
    - Copy clip names into the `Camera Notes` metadata field
-   - Copy Source Start TC from Track 2 to Audio Start TC of the mixdown clips
+   - Copy `Source Start TC` from Track 2 to `Audio Start TC` of the mixdown clips
    - Highlight any unmatched or duration-mismatched clips in orange
 
 ## Directly in the Resolve Console
