@@ -74,12 +74,8 @@ For further information, see **DaVinci Resolve → Help → Documentation → De
 
 ---
 
-
----
-
 # Running the Script
 
-## From the Workspace Menu
 1. Start DaVinci Resolve.  
 2. Open the menu `Workspace → Scripting`.  
 3. Select the script `nle_mixdown_metadata_bridge.py` from the list.  
@@ -88,19 +84,6 @@ For further information, see **DaVinci Resolve → Help → Documentation → De
    - Copy clip names into the `Camera Notes` metadata field
    - Copy `Source Start TC` from Track 2 to `Audio Start TC` of the mixdown clips
    - Highlight any unmatched or duration-mismatched clips in orange
-
-## Directly in the Resolve Console
-If the script is not installed in the Scripting folders, you can run it directly from the DaVinci Resolve Python console:
-
-1. Open the Console `Workspace → Console` and switch to Python 3.  
-2. Copy and paste the code starting from the line:
-
-```python
-# you can run the code below directly from the console. Switch Console to Python 3 before.
-```
-
-3. Press Enter to execute the script.  
-4. The script will perform the same actions as described above.
 
 ---
 
