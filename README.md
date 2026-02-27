@@ -13,26 +13,31 @@ GNU General Public License v3.0 or later
 
 # Description
 
-`nle_mixdown_metadata_bridge.py` is a scripting utility for **DaVinci Resolve**.
+`nle_mixdown_metadata_bridge` is a scripting utility for **DaVinci Resolve**.
+It copies source clip names and source TC to a splitted mixdown, imported by Scene Cut Detection via EDL.
 
-It is designed for mixdown-based roundtrip workflows from NLE systems such as Avid Media Composer or Adobe Premiere Pro to DaVinci Resolve.
+This is usefull for roundtrip workflows from NLE systems such as Avid Media Composer or Adobe Premiere Pro to DaVinci Resolve.
+It combines the robustness of a fully baked mixdown with the metadata advantages of an EDL. Now you can identify source cameras in mixdowns.
 
-Traditionally, there have been two ways to hand over a project from a NLE to DaVinci Resolve:
+# Workflow
+1. Export a video mixdown and EDL from your NLE of your choice (it's recommendet to delete all EDL lines starting with `M2`)
+2. Import the mixdown using the EDL within DaVinci's Scene Cut Detection
+3. Create a new timeline with the imported mixdown clips on V1
+4. Import the very same EDL via Timelines → Import, don't point to any media files
+5. Copy the offline clips from the EDL import to V2 above the mixdown clips  
+   Now you should have 2 Video Tracks with the same amount of clips and duration:
+   V2 (offline, EDL)       | Clip Alpha   | Clip Bravo   | Clip Charlie |
+   V1 (splitted Mixdown)   | Clip Mixdown | Clip Mixdown | Clip Mixdown |
+7. In the media pool make these columns visible: `Camera Notes`, `Audio Start TC`
+8. Run the script `nle_mixdown_metadata_bridge`
+   Now you should see
+   V2 (offline, EDL)       | Clip Alpha   | Clip Bravo   | Clip Charlie |
+   V1 (splitted Mixdown)   | Clip Alpha   | Clip Bravo   | Clip Charlie |
 
-**1. AAF / EDL Roundtrip**  
-The advantage of an AAF-based workflow is the preservation of metadata, which allows the timeline to be linked back to the original camera footage.  
-The disadvantage is that NLE-specific effects, timewarps, and certain editorial operations must be rebuilt or may not translate correctly in DaVinci Resolve.
-
-**2. Mixdown Workflow**  
-The advantage of a mixdown is that all effects are baked in, making it extremely stable and reliable.  
-The disadvantage is the loss of metadata, making it difficult to determine which mixdown segment originated from which source clip or camera.
-
-**3. A Third Workflow: Mixdown Meets Metadata**  
-`nle_mixdown_metadata_bridge` introduces a third workflow approach.
-It combines the robustness of a fully baked mixdown with the metadata advantages of an EDL.
-
-The script copies source clip names from an imported offline EDL (Track V2) to scene-detected mixdown clips (Track V1) and writes those names into the `Camera Notes` column in the Media Pool.
-It also copies the Source Start TC (Track V2) into the mixdown clips `Audio Start TC`.
+# What the script does
+The script copies `source clip names` from an imported offline EDL (Track V2) to `mixdown clip names` (Track V1)
+and writes those names into the `Camera Notes` column in the Media Pool.
+It also copies the EDL `Source Start TC` into the mixdown clips `Audio Start TC` for reference purposes.
 
 Due to EDL limitations, the copied TC is only valid if the framerates of the EDL's source and record, and the DaVinci timeline, are identical. 
 
