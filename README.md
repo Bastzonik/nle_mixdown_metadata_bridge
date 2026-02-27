@@ -21,11 +21,12 @@ It combines the robustness of a fully baked mixdown with the metadata advantages
 This allows you to identify source cameras in mixdowns when they are reflected in the source clip names.
 
 # Workflow
-1. Export a video mixdown and an EDL from the NLE of your choice (it is recommended to delete all EDL lines starting with `M2`)
-2. Import the mixdown using the EDL within DaVinci's Scene Cut Detection
-3. Create a new timeline with the imported mixdown clips on V1
-4. Import the very same EDL via Timelines → Import, don't point to any media files
-5. Copy the offline clips from the EDL import to V2 above the mixdown clips  
+1. Export a video mixdown and an EDL from the NLE of your choice (it is recommended to delete all EDL lines starting with `M2`).
+2. Import the mixdown using the EDL within DaVinci's Scene Cut Detection.
+3. Create a new timeline with the imported mixdown clips on V1.
+4. Import the very same EDL via Timelines → Import, don't point to any media files.
+5. Copy the offline clips from the EDL import to V2 above the mixdown clips.
+   
    You should now have two video tracks with the same number of clips and identical duration:
 
    | Track                 |              |              |              | 
@@ -34,8 +35,9 @@ This allows you to identify source cameras in mixdowns when they are reflected i
    | V1 (splitted Mixdown) | Clip Mixdown | Clip Mixdown | Clip Mixdown |  
 
    
-6. In the media pool make these columns visible: `Camera Notes`, `Audio Start TC`
-7. Run the script `nle_mixdown_metadata_bridge`  
+7. In the media pool make these columns visible: `Camera Notes`, `Audio Start TC`.
+8. Run the script `nle_mixdown_metadata_bridge`.
+   
    You should now see:
    
    | Track                 |              |              |              | 
@@ -90,7 +92,7 @@ For further information, see **DaVinci Resolve → Help → Documentation → De
 ## Directly in the Resolve Console
 If the script is not installed in the Scripting folders, you can run it directly from the DaVinci Resolve Python console:
 
-1. Open the Console and switch to Python 3.  
+1. Open the Console `Workspace → Console` and switch to Python 3.  
 2. Copy and paste the code starting from the line:
 
 ```python
