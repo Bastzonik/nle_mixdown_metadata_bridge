@@ -31,7 +31,7 @@ The disadvantage is the loss of metadata, making it difficult to determine which
 `nle_mixdown_metadata_bridge` introduces a third workflow approach.
 It combines the robustness of a fully baked mixdown with the metadata advantages of an EDL.
 
-The script copies clip names from an imported offline EDL (Track V2) to scene-detected mixdown clips (Track V1) and writes those names into the `Camera Notes` column in the Media Pool.
+The script copies source clip names from an imported offline EDL (Track V2) to scene-detected mixdown clips (Track V1) and writes those names into the `Camera Notes` column in the Media Pool.
 It also copies the Source Start TC (Track V2) into the mixdown clips `Audio Start TC`.
 
 Due to EDL limitations, the copied TC is only valid if the framerates of the EDL's source and record, and the DaVinci timeline, are identical. 
