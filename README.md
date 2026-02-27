@@ -14,18 +14,19 @@ GNU General Public License v3.0 or later
 # Description
 
 `nle_mixdown_metadata_bridge` is a scripting utility for **DaVinci Resolve**.
-It copies source clip names and source TC to a splitted mixdown, imported by Scene Cut Detection via EDL.
+It copies source clip names and source timecode to a splitted mixdown, imported by Scene Cut Detection via EDL.
 
-This is usefull for roundtrip workflows from NLE systems such as Avid Media Composer or Adobe Premiere Pro to DaVinci Resolve.
-It combines the robustness of a fully baked mixdown with the metadata advantages of an EDL. Now you can identify source cameras in mixdowns.
+This is useful for roundtrip workflows from NLE systems such as Avid Media Composer or Adobe Premiere Pro to DaVinci Resolve.
+It combines the robustness of a fully baked mixdown with the metadata advantages of an EDL.
+This allows you to identify source cameras in mixdowns when they are reflected in the source clip names.
 
 # Workflow
-1. Export a video mixdown and EDL from your NLE of your choice (it's recommendet to delete all EDL lines starting with `M2`)
+1. Export a video mixdown and an EDL from your NLE of your choice (it is recommended to delete all EDL lines starting with `M2`)
 2. Import the mixdown using the EDL within DaVinci's Scene Cut Detection
 3. Create a new timeline with the imported mixdown clips on V1
 4. Import the very same EDL via Timelines → Import, don't point to any media files
 5. Copy the offline clips from the EDL import to V2 above the mixdown clips  
-   Now you should have 2 Video Tracks with the same amount of clips and duration:  
+   You should now have two video tracks with the same number of clips and identical duration:
 
    | Track                 |              |              |              | 
    |-----------------------|--------------|--------------|--------------|  
@@ -33,9 +34,9 @@ It combines the robustness of a fully baked mixdown with the metadata advantages
    | V1 (splitted Mixdown) | Clip Mixdown | Clip Mixdown | Clip Mixdown |  
 
    
-7. In the media pool make these columns visible: `Camera Notes`, `Audio Start TC`
-8. Run the script `nle_mixdown_metadata_bridge`  
-   Now you should see:
+6. In the media pool make these columns visible: `Camera Notes`, `Audio Start TC`
+7. Run the script `nle_mixdown_metadata_bridge`  
+   You should now see:
    
    | Track                 |              |              |              | 
    |-----------------------|--------------|--------------|--------------|  
@@ -43,11 +44,11 @@ It combines the robustness of a fully baked mixdown with the metadata advantages
    | V1 (splitted Mixdown) | Clip Alpha   | Clip Bravo   | Clip Charlie |
 
 # What the script does
-The script copies `source clip names` from an imported offline EDL (Track V2) to `mixdown clip names` (Track V1)
+The script copies `source clip names` from an imported offline EDL (Track V2) to the corresponding `mixdown clip names` (Track V1)
 and writes those names into the `Camera Notes` column in the Media Pool.
-It also copies the EDL `Source Start TC` into the mixdown clips `Audio Start TC` for reference purposes.
+It also copies the EDL `Source Start TC` to the mixdown clips `Audio Start TC` field for reference purposes.
 
-Due to EDL limitations, the copied TC is only valid if the framerates of the EDL's source and record, and the DaVinci timeline, are identical. 
+Due to EDL limitations, the copied timecode is only valid if the framerates of the EDL source, the EDL record, and the DaVinci timeline are identical. 
 
 Clips with mismatched durations or missing counterparts (e.g., filler or gap segments from NLE exports) are not processed and are instead highlighted in **orange** on Track 1 for review.
 
