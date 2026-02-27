@@ -25,14 +25,22 @@ It combines the robustness of a fully baked mixdown with the metadata advantages
 3. Create a new timeline with the imported mixdown clips on V1
 4. Import the very same EDL via Timelines → Import, don't point to any media files
 5. Copy the offline clips from the EDL import to V2 above the mixdown clips  
-   Now you should have 2 Video Tracks with the same amount of clips and duration:
-   V2 (offline, EDL)       | Clip Alpha   | Clip Bravo   | Clip Charlie |
-   V1 (splitted Mixdown)   | Clip Mixdown | Clip Mixdown | Clip Mixdown |
+   Now you should have 2 Video Tracks with the same amount of clips and duration:  
+
+   | Track                 |              |              |              | 
+   |-----------------------|--------------|--------------|--------------|  
+   | V2 (offline, EDL)     | Clip Alpha   | Clip Bravo   | Clip Charlie |  
+   | V1 (splitted Mixdown) | Clip Mixdown | Clip Mixdown | Clip Mixdown |  
+
+   
 7. In the media pool make these columns visible: `Camera Notes`, `Audio Start TC`
-8. Run the script `nle_mixdown_metadata_bridge`
-   Now you should see
-   V2 (offline, EDL)       | Clip Alpha   | Clip Bravo   | Clip Charlie |
-   V1 (splitted Mixdown)   | Clip Alpha   | Clip Bravo   | Clip Charlie |
+8. Run the script `nle_mixdown_metadata_bridge`  
+   Now you should see:
+   
+   | Track                 |              |              |              | 
+   |-----------------------|--------------|--------------|--------------|  
+   | V2 (offline, EDL)     | Clip Alpha   | Clip Bravo   | Clip Charlie |  
+   | V1 (splitted Mixdown) | Clip Alpha   | Clip Bravo   | Clip Charlie |
 
 # What the script does
 The script copies `source clip names` from an imported offline EDL (Track V2) to `mixdown clip names` (Track V1)
