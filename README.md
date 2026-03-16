@@ -21,7 +21,8 @@ It combines the robustness of a fully baked mixdown with the metadata advantages
 This allows you to identify and sort mixdown clips by source camera when the camera information is included in the source clip names.
 
 # Workflow
-1. Export a video mixdown and an EDL from the NLE of your choice (it is strongly recommended to delete all EDL lines starting with `M2`; otherwise, not all cuts will be detected).
+1. Export a video mixdown and an EDL from the NLE of your choice.
+(It is strongly recommended to delete all EDL lines starting with `M2`; otherwise, not all cuts will be detected by DaVinci's Scene Cut Detection)
 2. Import the mixdown using the EDL within DaVinci's Scene Cut Detection.
 3. Create a new timeline with the imported mixdown clips on V1.
 4. Import the very same EDL via Timelines → Import, don't point to any media files.
