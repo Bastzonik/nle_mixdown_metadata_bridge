@@ -1,7 +1,7 @@
 # nle_mixdown_metadata_bridge
 
 ## Version
-1.0.0
+1.1.0
 
 ## Author
 Sebastian Schmidt
@@ -36,7 +36,7 @@ This allows you to identify and sort mixdown clips by source camera when the cam
    | V1 (splitted Mixdown) | Clip Mixdown | Clip Mixdown | Clip Mixdown |  
 
    
-7. In the media pool make these columns visible: `Camera Notes`, `Audio Start TC`.
+7. In the media pool make these columns visible: `Shot`, `Audio Start TC`.
 8. Run the script `nle_mixdown_metadata_bridge`.
    
    You should now see:
@@ -48,7 +48,7 @@ This allows you to identify and sort mixdown clips by source camera when the cam
 
 # What the script does
 The script copies `source clip names` from an imported offline EDL (Track V2) to the corresponding `mixdown clip names` (Track V1)
-and writes those names into the `Camera Notes` column in the Media Pool.
+and writes those names into the `Shot` column in the Media Pool.
 It also copies the EDL `Source Start TC` to the mixdown clips `Audio Start TC` field for reference purposes.
 
 Due to EDL limitations, the copied timecode is only valid if the framerates of the EDL source, the EDL record, and the DaVinci timeline are identical. 
@@ -82,7 +82,7 @@ For further information, see **DaVinci Resolve → Help → Documentation → De
 3. Select the script `nle_mixdown_metadata_bridge.py` from the list.  
 4. The script will run and:
    - Copy clip names from Track 2 to Track 1  
-   - Copy clip names into the `Camera Notes` metadata field
+   - Copy clip names into the `Shot` metadata field
    - Copy `Source Start TC` from Track 2 to `Audio Start TC` of the mixdown clips
    - Highlight any unmatched or duration-mismatched clips in orange
 
