@@ -1,5 +1,5 @@
 # nle_mixdown_metadata_bridge.py
-# Version: 1.0.0
+# Version: 1.1.0
 # Author: Sebastian Schmidt
 # License: GNU General Public License v3.0
 
@@ -8,7 +8,7 @@ nle_mixdown_metadata_bridge.py
 
 Copies clip names from an imported offline EDL (Track V2)
 to scene-detected mixdown clips (Track V1)
-and writes those names into the Camera Notes column in the Media Pool.
+and writes those names into the Shot column in the Media Pool.
 
 Also copies the EDL Source Start TC into the mixdown clips'
 Audio Start TC field for reference purposes.
@@ -160,7 +160,7 @@ for i in range(len(clips_v1)):
             mp_item = clip_v1.GetMediaPoolItem()
 
             if mp_item:
-                mp_item.SetMetadata("Camera Notes", name_v2)
+                mp_item.SetMetadata("Shot", name_v2)
 
                 tc = None
                 source_seconds = clip_v2.GetSourceStartTime()
