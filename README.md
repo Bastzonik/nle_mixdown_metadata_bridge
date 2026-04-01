@@ -1,7 +1,7 @@
 # nle_mixdown_metadata_bridge
 
 ## Version
-1.1.0
+1.2.0
 
 ## Author
 Sebastian Schmidt
